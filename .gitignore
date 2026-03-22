@@ -12,6 +12,4 @@
 ###############
 # Claude Code #
 ###############
-.claude/*
-!.claude/settings.json
-!.claude/hooks/
+*.local.*
