@@ -49,6 +49,12 @@ See `.editorconfig` for the full set of rules and per-language overrides.
 
 When both `.editorconfig` and `Project.xml` define the same formatting rule, `.editorconfig` takes precedence. The `Project.xml` file is only necessary for Groovy-specific settings that EditorConfig does not support.
 
+## AI agent support
+
+This repo includes a `CLAUDE.md` file with project context for [Claude Code](https://claude.ai/claude-code) by Anthropic.
+
+This repo was built and maintained with Claude Code (Claude Opus 4.6) -- from initial setup and file creation to branching, PRs, and documentation.
+
 ## License
 
 [MIT](LICENSE)
