@@ -45,6 +45,103 @@ If your `.gitignore` uses `.idea/` (with a trailing slash), Git treats it as a d
 
 See `.editorconfig` for the full set of rules and per-language overrides.
 
+## Examples
+
+Basic test with `given/when/then` and forced braces:
+
+```groovy
+class UserServiceSpec extends Specification {
+
+	def "should register new user and send welcome email"() {
+		given:
+		def user = new User(name: "Jane Doe", email: "jane@example.com")
+
+		and:
+		userRepository.findByEmail(user.email) >> null
+
+		when:
+		def result = userService.register(user)
+
+		then:
+		1 * userRepository.save({ User saved ->
+			saved.name == "Jane Doe"
+			saved.createdAt != null
+		}) >> user
+
+		and:
+		1 * emailService.sendWelcome(user.email)
+
+		and:
+		result.name == "Jane Doe"
+	}
+}
+```
+
+Data-driven test with `where:` block:
+
+```groovy
+class EmailValidationSpec extends Specification {
+
+	def "should validate email format for '#email'"() {
+		expect:
+		emailService.isValid(email) == expected
+
+		where:
+		email               || expected
+		"user@example.com"  || true
+		"admin@company.org" || true
+		"invalid-email"     || false
+		""                  || false
+	}
+}
+```
+
+Aligned field declarations with Selenide page objects:
+
+```groovy
+class CheckoutPage {
+
+	static  String             url        = "${Conf.baseUrl}/checkout"
+	private SelenideElement    cartTotal  = $(cssSelector: "[data-testid=cartTotal]")
+	        ElementsCollection orderItems = $$(cssSelector: "[data-testid=orderItem]")
+}
+```
+
+Exception handling and collection assertions:
+
+```groovy
+class OrderServiceSpec extends Specification {
+
+	def "should throw exception when order not found"() {
+		given:
+		orderRepository.findById(999L) >> Optional.empty()
+
+		when:
+		orderService.getById(999L)
+
+		then:
+		thrown(OrderNotFoundException)
+	}
+
+	def "should filter orders by status"() {
+		given:
+		def orders = [
+			new Order(id: 1, status: SHIPPED, total: 149.50),
+			new Order(id: 2, status: PENDING, total: 29.99),
+			new Order(id: 3, status: SHIPPED, total: 200.00),
+		]
+
+		when:
+		def result = orderService.filterByStatus(orders, SHIPPED)
+
+		then:
+		result.size() == 2
+		result.every { it.status == SHIPPED }
+		result*.total.sum() == 349.50
+	}
+}
+```
+
 ## Precedence
 
 When both `.editorconfig` and `Project.xml` define the same formatting rule, `.editorconfig` takes precedence. The `Project.xml` file is only necessary for Groovy-specific settings that EditorConfig does not support.
