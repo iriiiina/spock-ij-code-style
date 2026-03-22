@@ -102,7 +102,7 @@ Aligned field declarations with Selenide page objects:
 class CheckoutPage {
 
 	static  String             url        = "${Conf.baseUrl}/checkout"
-	private SelenideElement    cartTotal. = $(cssSelector: "[data-testid=cartTotal]")
+	private SelenideElement    cartTotal  = $(cssSelector: "[data-testid=cartTotal]")
 	        ElementsCollection orderItems = $$(cssSelector: "[data-testid=orderItem]")
 }
 ```
