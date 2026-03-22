@@ -51,7 +51,7 @@ When both `.editorconfig` and `Project.xml` define the same formatting rule, `.e
 
 ## AI agent support
 
-This repo includes a `CLAUDE.md` file with project context for [Claude Code](https://claude.ai/claude-code) by Anthropic.
+This repo includes a `CLAUDE.md` file with project context for [Claude Code](https://claude.com/product/claude-code) by Anthropic.
 
 This repo was built and maintained with Claude Code (Claude Opus 4.6) -- from initial setup and file creation to branching, PRs, and documentation.
 
