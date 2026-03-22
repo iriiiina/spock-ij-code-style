@@ -1,5 +1,11 @@
 # Spock IntelliJ Code Style
 
+[![License: MIT](https://img.shields.io/github/license/iriiiina/spock-ij-code-style)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/iriiiina/spock-ij-code-style)](https://github.com/iriiiina/spock-ij-code-style/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/iriiiina/spock-ij-code-style)](https://github.com/iriiiina/spock-ij-code-style/stargazers)
+[![EditorConfig](https://img.shields.io/badge/EditorConfig-supported-blue)](https://editorconfig.org/)
+[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-compatible-purple)](https://www.jetbrains.com/idea/)
+
 A shareable code style configuration for [Groovy](https://groovy-lang.org/)/[Spock](https://spockframework.org/) test projects in [IntelliJ IDEA](https://www.jetbrains.com/idea/). Drop these files into any project to get consistent formatting out of the box.
 
 ## What is included
