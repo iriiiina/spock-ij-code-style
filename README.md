@@ -1,6 +1,6 @@
 # Spock IntelliJ Code Style
 
-A shareable code style configuration for Groovy/[Spock](https://spockframework.org/) test projects in [IntelliJ IDEA](https://www.jetbrains.com/idea/). Drop these files into any project to get consistent formatting out of the box.
+A shareable code style configuration for [Groovy](https://groovy-lang.org/)/[Spock](https://spockframework.org/) test projects in [IntelliJ IDEA](https://www.jetbrains.com/idea/). Drop these files into any project to get consistent formatting out of the box.
 
 ## What is included
 
@@ -35,7 +35,7 @@ If your `.gitignore` uses `.idea/` (with a trailing slash), Git treats it as a d
 
 | Rule | Value |
 |------|-------|
-| Indent style | spaces |
+| Indent style | tabs |
 | Indent size | 2 |
 | Continuation indent | 4 |
 | Max line length | 120 |
