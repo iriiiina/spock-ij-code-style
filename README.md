@@ -49,6 +49,18 @@ See `.editorconfig` for the full set of rules and per-language overrides.
 
 When both `.editorconfig` and `Project.xml` define the same formatting rule, `.editorconfig` takes precedence. The `Project.xml` file is only necessary for Groovy-specific settings that EditorConfig does not support.
 
+## AI agent support
+
+This repo is AI-ready. It includes project context files that help AI coding assistants understand the repository structure, constraints, and conventions:
+
+| File | Agent |
+|------|-------|
+| `CLAUDE.md` | [Claude Code](https://claude.ai/claude-code) by Anthropic |
+| `.ai_project_memory/.cursorrules` | [Cursor](https://cursor.com/) |
+| `.ai_project_memory/copilot-instructions.md` | [GitHub Copilot](https://github.com/features/copilot) |
+
+This repo was built and maintained with [Claude Code](https://claude.ai/claude-code) (Claude Opus 4.6) -- from initial setup and file creation to branching, PRs, and documentation.
+
 ## License
 
 [MIT](LICENSE)
