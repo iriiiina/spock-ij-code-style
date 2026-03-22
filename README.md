@@ -51,15 +51,9 @@ When both `.editorconfig` and `Project.xml` define the same formatting rule, `.e
 
 ## AI agent support
 
-This repo is AI-ready. It includes project context files that help AI coding assistants understand the repository structure, constraints, and conventions:
+This repo includes a `CLAUDE.md` file with project context for [Claude Code](https://claude.ai/claude-code) by Anthropic.
 
-| File | Agent |
-|------|-------|
-| `CLAUDE.md` | [Claude Code](https://claude.ai/claude-code) by Anthropic |
-| `.ai_project_memory/.cursorrules` | [Cursor](https://cursor.com/) |
-| `.ai_project_memory/copilot-instructions.md` | [GitHub Copilot](https://github.com/features/copilot) |
-
-This repo was built and maintained with [Claude Code](https://claude.ai/claude-code) (Claude Opus 4.6) -- from initial setup and file creation to branching, PRs, and documentation.
+This repo was built and maintained with Claude Code (Claude Opus 4.6) -- from initial setup and file creation to branching, PRs, and documentation.
 
 ## License
 
