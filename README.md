@@ -5,7 +5,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/iriiiina/spock-ij-code-style)](https://github.com/iriiiina/spock-ij-code-style/stargazers)
 [![EditorConfig](https://img.shields.io/badge/EditorConfig-supported-blue)](https://editorconfig.org/)
 [![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-compatible-purple)](https://www.jetbrains.com/idea/)
-[![Claude](https://img.shields.io/badge/Claude-compatible-D97706?logo=claude)](https://claude.com/product/claude-code)
+[![Claude](https://img.shields.io/badge/Claude-compatible-D97706?logo=claude)](CLAUDE.md)
 
 A shareable code style configuration for [Groovy](https://groovy-lang.org/)/[Spock](https://spockframework.org/) test projects in [IntelliJ IDEA](https://www.jetbrains.com/idea/). Drop these files into any project to get consistent formatting out of the box.
 
