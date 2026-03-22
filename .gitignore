@@ -1,4 +1,17 @@
+##########
+# Mac OS #
+##########
 .DS_Store
+
+#################
+# IntelliJ IDEA #
+#################
 .idea/*
 !.idea/codeStyles/
-.claude/
+
+###############
+# Claude Code #
+###############
+.claude/*
+!.claude/settings.json
+!.claude/hooks/
