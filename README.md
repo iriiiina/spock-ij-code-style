@@ -9,6 +9,8 @@
 
 A shareable code style configuration for [Groovy](https://groovy-lang.org/)/[Spock](https://spockframework.org/) test projects in [IntelliJ IDEA](https://www.jetbrains.com/idea/). Drop these files into any project to get consistent formatting out of the box.
 
+> **Using an AI coding assistant?** See [Using Claude Code in your project](#using-claude-code-in-your-project) for a ready-to-paste `CLAUDE.md` snippet with Groovy/Spock conventions.
+
 ## What is included
 
 | File | Purpose |
@@ -16,6 +18,10 @@ A shareable code style configuration for [Groovy](https://groovy-lang.org/)/[Spo
 | `.editorconfig` | Primary formatting rules using standard [EditorConfig](https://editorconfig.org/) properties plus IntelliJ-specific `ij_*` extensions. Covers Groovy, Java, XML, JSON, YAML, properties, shell scripts, and Markdown. |
 | `.idea/codeStyles/codeStyleConfig.xml` | Tells IntelliJ to use the project-level code style instead of your personal IDE scheme. |
 | `.idea/codeStyles/Project.xml` | Additional Groovy formatting rules that EditorConfig cannot express (e.g., blank line policies, brace placement, import layout). |
+
+### Precedence
+
+When both `.editorconfig` and `Project.xml` define the same formatting rule, `.editorconfig` takes precedence. The `Project.xml` file is only necessary for Groovy-specific settings that EditorConfig does not support.
 
 ## How to use
 
@@ -149,15 +155,87 @@ class OrderServiceSpec extends Specification {
 }
 ```
 
-## Precedence
+## Using Claude Code in your project
 
-When both `.editorconfig` and `Project.xml` define the same formatting rule, `.editorconfig` takes precedence. The `Project.xml` file is only necessary for Groovy-specific settings that EditorConfig does not support.
+[Claude Code](https://claude.com/product/claude-code) uses a `CLAUDE.md` file in the project root to understand your project's conventions. It works like a persistent prompt: Claude picks it up automatically and applies its rules to every suggestion, refactor, and code generation it makes.
 
-## AI agent support
+Run `/init` inside Claude Code to auto-generate a starter `CLAUDE.md` from your existing project. Then paste the block below to add Groovy/Spock rules that match this code style config:
 
-This repo includes a `CLAUDE.md` file with project context for [Claude Code](https://claude.com/product/claude-code) by Anthropic.
+> **Note:** This snippet covers only the Groovy/Spock-specific part. A complete `CLAUDE.md` should also describe your project's architecture, build commands, domain conventions, and anything else Claude needs to work effectively in your codebase.
 
-This repo was built and maintained with Claude Code (Claude Opus 4.6) -- from initial setup and file creation to branching, PRs, and documentation.
+````markdown
+## Coding Standards
+
+### Formatting
+
+All formatting rules are defined in `.editorconfig` and `.idea/codeStyles/Project.xml`. When writing or editing code, follow these key rules:
+
+- **Groovy**: use tabs (width 2), max line length 120, continuation indent 4
+- **YAML**: use spaces (indent size 2)
+- **Properties**: use `=` delimiter, preserve blank lines between groups
+- **XML/POM**: use spaces (indent size 4), align attributes
+- **Markdown**: wrap text if long, one blank line around headers and block elements
+
+### Groovy Style
+
+- Use precise variable types instead of `def` when the type is known:
+  ```groovy
+  // BAD
+  def session = new Session()
+
+  // GOOD
+  Session session = new Session()
+  ```
+
+### Test Structure (Spock BDD)
+
+- In test classes, all test methods should come first, followed by helper methods at the bottom of the class
+- The first test in a class should always be the happy-path test
+- When adding a new test, add it as the last test method in the class (unless it's a happy-path test, which goes first).
+  Helper methods must remain at the very bottom, after all tests.
+- Remove unused imports, variables, and methods after editing code
+- If deleting code leaves a Spock block empty (`given:`, `when:`, `then:`, `and:`, `cleanup:`), delete the block label
+  too
+- When adding a label to a Spock block (e.g. `when: "..."`, `and: "..."`), make sure the description accurately reflects
+  what that block actually does
+
+All tests follow this pattern:
+
+```groovy
+@Epic("UI") // Test layer: UI, Accessibility, API. API tests have module name as well, like "API: PERSON"
+@Feature("Authentication") // The main purpose of the current test suit. UI tests describe flow here, API tests contains endpoint under test 
+@Timeout(value = 1, unit = TimeUnit.MINUTES) // UI tests have larger timeouts, like 1 or even more minutes, API tests have 30 seconds timeout, health monitoring tests have 10 second timeout
+class MyTest extends Spec {
+    
+    @Ignore("TASK NUMBER") // If some test is ignored, then it should be related to some task number
+    @Story("REQUIREMENT_ID")
+    @Link(name = "REQUIREMENT_ID", url = "https://documentation/REQUIREMENT_ID")
+    def "test description"() {
+        given:
+        // Setup session, login page, test data
+
+        when:
+        // Perform actions
+
+        then:
+        // Assertions
+
+        cleanup:
+        // Optional cookie deletion, clear storage (mostly in UI tests)
+
+        where:  // Optional parameterized tests
+        param1 | param2 || expected
+        "val1" | "val2" || "result"
+    }
+}
+```
+````
+
+## AI agent support of this repo
+
+This repo includes a [`CLAUDE.md`](CLAUDE.md) file with project context for Claude Code.
+
+This repo was built and maintained with Claude Code (Claude Opus 4.6) - from initial setup and file creation to branching, PRs, and documentation.
 
 ## License
 

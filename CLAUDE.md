@@ -10,6 +10,7 @@ This repo provides a shareable, opinionated code style configuration for Groovy/
 .editorconfig                         # Primary formatting rules (EditorConfig + IntelliJ ij_* extensions)
 .idea/codeStyles/codeStyleConfig.xml  # Enables project-level code style in IntelliJ
 .idea/codeStyles/Project.xml          # Groovy-specific rules not expressible in EditorConfig
+CLAUDE.md                             # Project context for Claude Code (this file)
 .gitignore                            # macOS .DS_Store exclusion
 LICENSE                               # MIT License
 README.md                             # Usage instructions and documentation
